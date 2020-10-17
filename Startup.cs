@@ -29,6 +29,7 @@ namespace weatherapi3
         {
             services.AddControllers();
 
+
             services.AddDbContext<MainDbContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("weatherapi3Context")));
         }
