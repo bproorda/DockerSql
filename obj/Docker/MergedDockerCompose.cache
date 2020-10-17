@@ -1,0 +1,21 @@
+services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: Pa55word!
+    image: mcr.microsoft.com/mssql/server
+  weatherapi3:
+    build:
+      context: C:\Users\bproo\Documents\coding\docker\attempt29\weatherapi3
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: weatherapi3
+    ports:
+    - target: 80
+    - target: 443
+    volumes:
+    - C:\Users\bproo\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\bproo\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+version: '3.4'
